@@ -29,10 +29,10 @@ There are following input and output data.
 /data (input)
     - image1.png : One of input images.
     - image2.png : One of input images.
-    - flow1.flo : Floating-point 2D flow map (from image1 to image2). Not required.
-    - flow2.flo : Floating-point 2D flow map (from image2 to image1). Not required.
-    - mask1.png : Foreground mask for image1. Not required.
-    - mask2.png : Foreground mask for image2. Not required.
+    - flow1.flo : Ground truth floating-point 2D flow map (from image1 to image2). Optional.
+    - flow2.flo : Ground truth floating-point 2D flow map (from image2 to image1). Optional.
+    - mask1.png : Ground truth foreground mask for image1. Optional.
+    - mask2.png : Ground truth foreground mask for image2. Optional.
 
 /feature (output)
     - Output files of feature extraction.
