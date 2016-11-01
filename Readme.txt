@@ -1,6 +1,6 @@
 This application provides executable binaries for a demonstration of the following paper.
 If you use our algorithm, please cite our CVPR 2016 paper.
-We do not plan to release our original source code of the algorithm due to the lisenced issue.
+We do not plan to release our original source code of the algorithm due to the lisence issue.
 Our dataset and results are available at http://taniai.space/projects/cvpr16_dccs/
 We also provide an evaluation and visualization kit at https://github.com/t-taniai/TSS_CVPR2016_EvaluationKit
 
