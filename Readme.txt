@@ -43,9 +43,9 @@ There are following input and output data.
     - mask1.png : Estimated foreground mask for image1.
     - mask2.png : Estimated foreground mask for image2.
     - options.txt : List of option settings. (Some of them are explained below).
-    - summary_f1.png : Warped image results at each hierarchical layer. (Flip between f1 and f2 to verify alignment).
+    - summary_f1.png : Warped image results at each layer. (Flip between f1 and f2 to verify alignment).
     - summary_f2.png : Original images
-    - summary_f3.png : Warped image results with segmentation at each hierarchical layer.
+    - summary_f3.png : Warped image results with segmentation at each layer.
     - summary1.png : Results of image1. See explanations below.
     - summary2.png : Results of image2. See explanations below.
 
@@ -56,7 +56,7 @@ Files (flow and mask) with _01 _00 are results before and after the final refine
 ---------------
 Visualization :
 ---------------
-Summary images (summary1 and summary2) show results of finest to coarsest layers from left to right columns.
+Summary images (summary1 and 2) show results of finest to coarsest layers from left to right columns.
 1st row : Superpixel hierarchy.
 2nd row : Estimated flow maps.
 3rd row : Ground truth flow maps (if provided in the data directory).
@@ -71,15 +71,15 @@ Option parameters :
 ------------------
 Options of the main algorithm (CosegMatching.exe):
     -doPerPixelRefinement [1 or 0] : Use the finest pixel layer or not. This refinement takes time.
-    -featureType          [string] : Extension of feature files. By changing this you can use your own features. See below.
+    -featureType          [string] : Extension of feature files. You can use your features. See below.
     -matchingMetric       [1 or 2] : Norm of Equation 4 in the paper.
     -matchingEngW         [float]  : lambda_flo in Equation 2.
     -matchingEngOcc       [float]  : lambda_occ in Equation 3.
     -matchingEngTrunc     [float]  : tau_D in Quation 4.
 
 Options of feature extraction (DenseFeatureExtract.exe):
-    -maxImageDimension    [int]    : The maximum image dimension (mostly width) is resized to this value (default 512).
-    -forceImageDimension  [1 or 0] : If 0, images are resized only when they are smaller than the specified size.
+    -maxImageDimension    [int]    : The maximum image dimension (mostly width) is seto to this value.
+    -forceImageDimension  [1 or 0] : If 0, images are resized only if they are larger than the size.
 
 --------------------
 Feature file format :
@@ -106,7 +106,7 @@ for ( each pyramid level in coase to fine order )
     {
         [float] : Normalized x coordinate. (int)(x * wk) is x coodinate in this level.
         [float] : Normalized y coordinate. (int)(y * hk) is y coodinate in this level.
-        [float] : Sum of absolute gradient of paches (reliability of this feature). Not refered by default.
+        [float] : Sum of absolute gradient of paches (feature reliability). Not refered by default.
         [float array] : Feature vector data (float array[dim]).
     }
 }
