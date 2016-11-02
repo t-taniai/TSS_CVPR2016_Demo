@@ -65,6 +65,19 @@ Summary images (summary1 and 2) show results of finest to coarsest layers from l
 6th row : Estimated segmentation results.
 7th row : Ground truth segmentation (if provided in the data directory).
 
+---------------------
+Process of algorithm :
+---------------------
+[DenseFeatureExtract]
+1. Extract dense feature pyramids and save them as binary files.
+   This process is skipped if feature files already exist.
+   (By preparing your own feature files, the later process will be proecssed by your features).
+2. Estimate ratio maps (foreground/background clues) and initial flow maps
+   using region featurs computed by bog-of-Visual-Words codebook of the local features.
+[CosegMatching]
+3. Load feature files, initial flow maps and ratio maps,
+   and perform the two-pass optimization algorithm.
+4. If an optioni of doPerPixelRefinement is on, perform the final refinement.
 
 ------------------
 Option parameters :
@@ -81,11 +94,13 @@ Options of feature extraction (DenseFeatureExtract.exe):
     -maxImageDimension    [int]    : The maximum image dimension (mostly width) is seto to this value.
     -forceImageDimension  [1 or 0] : If 0, images are resized only if they are larger than the size.
 
+
 --------------------
 Feature file format :
 --------------------
 The feature files (image1.hogc and image2.hogc in /feature) are structured as follows.
-The core algorithm only refers the feature vectors of the finest level.
+The core algorithm assumes 3 levels of pyramid,
+but only the feature vectors of the finest level are used.
 When you make your own feature files,
 the image size of the finest level should be the same with the settings of DenseFeatureExtract.
 
