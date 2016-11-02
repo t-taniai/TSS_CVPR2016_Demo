@@ -71,13 +71,14 @@ Process of algorithm :
 [DenseFeatureExtract]
 1. Extract dense feature pyramids and save them as binary files.
    This process is skipped if feature files already exist.
-   (By preparing your own feature files, the later process will be proecssed with your features).
+   (By preparing your own feature files, the later algorithm will be proecssed with your features).
 2. Estimate ratio maps (foreground/background clues) and initial flow maps
    using region featurs computed by bag-of-visual-words codebook of the local features.
 [CosegMatching]
-3. Load feature files, initial flow maps and ratio maps,
-   and perform the two-pass optimization algorithm.
-4. If an optioni of doPerPixelRefinement is on, perform the final refinement.
+3. Load feature files, initial flow maps and ratio maps.
+4. Estimate initial segmentation using the ratio maps,
+   and flow maps are also initialized by the loaded data.
+5. If an optioni of doPerPixelRefinement is on, perform the final refinement.
 
 ------------------
 Option parameters :
