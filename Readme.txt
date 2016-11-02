@@ -78,23 +78,23 @@ Process of algorithm :
 3. Load feature files, initial flow maps and ratio maps.
 4. Estimate initial segmentation using the ratio maps,
    and flow maps are also initialized by the loaded data.
-5. If an optioni of doPerPixelRefinement is on, perform the final refinement.
+5. Perform the two-pass optimizaton algorithm.
+   If "-doPerPixelRefinement" is on, the final refinement is performed before saving results.
 
 ------------------
 Option parameters :
 ------------------
+Options of feature extraction (DenseFeatureExtract.exe):
+    -maxImageDimension    [int]    : The maximum image dimension (mostly width) is seto to this value.
+    -forceImageDimension  [1 or 0] : If 0, images are resized only if they are larger than the size.
+
 Options of the main algorithm (CosegMatching.exe):
     -doPerPixelRefinement [1 or 0] : Use the finest pixel layer or not. This refinement takes time.
     -featureType          [string] : Extension of feature files. You can use your features. See below.
     -matchingMetric       [1 or 2] : Norm of Equation 4 in the paper.
     -matchingEngW         [float]  : lambda_flo in Equation 2.
     -matchingEngOcc       [float]  : lambda_occ in Equation 3.
-    -matchingEngTrunc     [float]  : tau_D in Quation 4.
-
-Options of feature extraction (DenseFeatureExtract.exe):
-    -maxImageDimension    [int]    : The maximum image dimension (mostly width) is seto to this value.
-    -forceImageDimension  [1 or 0] : If 0, images are resized only if they are larger than the size.
-
+    -matchingEngTrunc     [float]  : tau_D in Equation 4.
 
 --------------------
 Feature file format :
