@@ -71,9 +71,9 @@ Process of algorithm :
 [DenseFeatureExtract]
 1. Extract dense feature pyramids and save them as binary files.
    This process is skipped if feature files already exist.
-   (By preparing your own feature files, the later process will be proecssed by your features).
+   (By preparing your own feature files, the later process will be proecssed with your features).
 2. Estimate ratio maps (foreground/background clues) and initial flow maps
-   using region featurs computed by bog-of-Visual-Words codebook of the local features.
+   using region featurs computed by bag-of-visual-words codebook of the local features.
 [CosegMatching]
 3. Load feature files, initial flow maps and ratio maps,
    and perform the two-pass optimization algorithm.
